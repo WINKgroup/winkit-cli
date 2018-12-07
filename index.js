@@ -1,16 +1,18 @@
 #!/usr/bin/env node
-const {createPlugin, updatePlugins, deletePlugin} = require('./gulpfile');
-
+const {createPlugin, updatePlugin, deletePlugin, supportedPlugins} = require('./gulpfile');
 const program = require('commander');
-const angular = require('./plugins/angular/index');
+const fs = require('fs');
 
 const version = '0.1a';
-const plugins = [
-];
 
 function addPlugin(plugin, p) {
-    const c = angular.command;
-    p.command(c.command).action(c.action).on('--help', c.onHelp);
+    if (fs.existsSync(`./plugins/${plugin}/index.js`)) {
+        const pi = require(`./plugins/${plugin}/index`);
+        const c = pi.command;
+        if (pi && c) {
+            p.command(c.command).action(c.action).on('--help', c.onHelp);
+        }
+    }
 }
 
 program
@@ -20,25 +22,37 @@ program
 program
     .command('add:plugin <name>')
     .description('Add new plugin to your Winkit CLI.')
-    .action((name) => {
-        createPlugin(name);
+    .action(async (name) => {
+        try {
+            await createPlugin(name);
+        } catch (e) {
+            console.log('Error adding plugin!' + e.message);
+        }
     });
 
 program
-    .command('update:plugins <name>')
+    .command('update:plugin <name>')
     .description('Update an existing plugin of your Winkit CLI.')
-    .action((name, args) => {
-        updatePlugins(name, args);
+    .action(async (name) => {
+        try {
+            await updatePlugin(name);
+        } catch (e) {
+            console.log('Error updating plugin!' + e.message);
+        }
     });
 
 program
     .command('delete:plugin <name>')
     .description('Delete an existing plugin of your Winkit CLI.')
-    .action((name) => {
-        deletePlugin(name);
+    .action(async (name) => {
+        try {
+            await deletePlugin(name);
+        } catch (e) {
+            console.log('Error deleting plugin!' + e.message);
+        }
     });
 
-plugins.forEach(p => {
+supportedPlugins.forEach(p => {
     addPlugin(p, program);
 });
 
