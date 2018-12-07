@@ -1,13 +1,13 @@
 {
-  "name": "winkit-cli",
-  "version": "1.0.1",
+  "name": "winkit",
+  "version": "1.0.0",
   "main": "index.js",
   "author": "Wink S.r.l.",
   "license": "MIT",
   "preferGlobal": true,
   "bin": "index.js",
   "scripts": {
-    "postinstall": "yarn unlink \"winkit\" && yarn link && yarn link \"winkit\""
+    "postinstall": "yarn link && yarn link \"winkit\""
   },
   "dependencies": {
     "commander": "2.19.0",
