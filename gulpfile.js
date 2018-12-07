@@ -48,8 +48,7 @@ function createPlugin(name) {
                 } else {
                     try {
                         process.chdir(`./plugins/${name}/`);
-                        // resolve(!!await cloneRepo(name, `https://github.com/WINKgroup/winkit-cli-${name}.git`));
-                        resolve(!!await cloneRepo(name, `https://gitlab.com/winkular/winkular-cli.git`));
+                        resolve(!!await cloneRepo(name, `https://github.com/WINKgroup/winkit-cli-${name}.git`));
                     } catch (e) {
                         reject(e);
                     }
