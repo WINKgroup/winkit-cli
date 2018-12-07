@@ -1,6 +1,6 @@
 {
-  "name": "winkit",
-  "version": "0.1",
+  "name": "winkit-cli",
+  "version": "1.0.0",
   "main": "index.js",
   "author": "Wink S.r.l.",
   "license": "MIT",
