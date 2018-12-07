@@ -35,4 +35,4 @@ Delete an existing plugin of your Winkit CLI.
 
 ## Contact
 
-If you find any errors, typos, issues... basically anything that you think we should fix or improve in WDK Angular, send us an email to info@wink.by
+If you find any errors, typos, issues... basically anything that you think we should fix or improve in Winkit CLI, send us an email to info@wink.by
