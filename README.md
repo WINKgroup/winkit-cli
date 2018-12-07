@@ -1,6 +1,6 @@
 # Winkit CLI
 [<img src="readme-res/badge.svg" height=40>](https://developer.wink.by)
-[![Platforms](https://img.shields.io/badge/style-popout-red.svg?logo=angular&style=popout&colorA=black&colorB=DD0031)](https://angular.io/)
+[![Platforms](https://img.shields.io/badge/node-10.11-green.svg?logo=node.js&longCache=true&style=popout&colorB=339933)](https://nodejs.org)
 [![Platforms](https://img.shields.io/badge/platform-macOS-lightgray.svg?logo=apple&longCache=true&style=popout)](https://www.apple.com/macos/)
 [![Platforms](https://img.shields.io/badge/platform-windows-blue.svg?logo=windows&longCache=true&style=popout&logoColor=blue)](https://windows.com)
 [![Platforms](https://img.shields.io/badge/platform-linux-yellow.svg?logo=linux&longCache=true&style=popout&colorB=FCC624)](https://www.linuxfoundation.org/)
