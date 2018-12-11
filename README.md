@@ -16,6 +16,7 @@ Winkit CLI is a command line that allows you to manage and use all the related p
 ## Minimum requirements
 - [Yarn 1.10.1](https://yarnpkg.com/en/docs/install)
 - [Node 10.11.0 + npm](https://nodejs.org/)
+- [Git](https://git-scm.com/)
 
 ## Get started
 - Go in winkit-cli folder and run `yarn install` (NOTE: in case of problems in Unix filesystems run `cd /usr/local/bin && chmod +x winkit`)
