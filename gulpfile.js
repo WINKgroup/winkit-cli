@@ -11,7 +11,7 @@ const supportedPlugins = [
 
 function cloneRepo(name, origin) {
     return new Promise((resolve, reject) => {
-        console.log(color(`Cloning ${name}...`, 'BLUE'));
+        console.log(color(`Installing ${name} plugin...`, 'BLUE'));
         git.init((err) => {
             if (err) {
                 reject(err);
@@ -25,7 +25,7 @@ function cloneRepo(name, origin) {
                                 fsExtra.removeSync(`../${name}`);
                                 reject(err2);
                             } else {
-                                console.log(color(`${name} plugin cloned successfully`, 'GREEN'));
+                                console.log(color(`${name} plugin installed successfully.`, 'GREEN'));
                                 resolve(true);
                             }
                         });
