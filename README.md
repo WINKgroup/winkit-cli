@@ -11,6 +11,7 @@ Winkit CLI is a command line that allows you to manage and use all the related p
 
 ## Supported plugins
 - [WDK Angular CLI](https://github.com/WINKgroup/winkit-cli-angular.git)
+- [WDK Node](https://github.com/WINKgroup/winkit-cli-node.git)
 
 
 ## Minimum requirements
