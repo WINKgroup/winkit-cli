@@ -6,7 +6,8 @@ const fs = require('fs');
 const fsExtra = require('fs-extra');
 
 const supportedPlugins = [
-    'angular'
+    'angular',
+    'node'
 ];
 
 function cloneRepo(name, origin) {

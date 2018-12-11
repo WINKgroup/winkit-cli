@@ -3,11 +3,11 @@ const {createPlugin, updatePlugin, deletePlugin, supportedPlugins} = require('./
 const program = require('commander');
 const fs = require('fs');
 
-const version = '1.0.4';
+const version = '1.0.5';
 
 function addPlugin(plugin, p) {
-    if (fs.existsSync(`./plugins/${plugin}/index.js`)) {
-        const pi = require(`./plugins/${plugin}/index`);
+    if (fs.existsSync(`${__dirname}/plugins/${plugin}/index.js`)) {
+        const pi = require(`${__dirname}/plugins/${plugin}/index`);
         const c = pi.command;
         if (pi && c) {
             p.command(c.command).action(c.action).on('--help', c.onHelp);
