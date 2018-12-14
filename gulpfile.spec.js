@@ -8,6 +8,10 @@ const { addPluginHelp } = require('./index');
 const { createPlugin, updatePlugin, deletePlugin, supportedPlugins } = require('./gulpfile');
 
 describe('winkit plugin managment', function() {
+    const INVALID_NAME = 'invalidPlugin';
+    const VALID_NAME = 'angular';
+    const PLUGIN_FOLDER_PATH = `${__dirname}/plugins/${VALID_NAME}/`;
+
     before(function() {
         expect(supportedPlugins).to.be.an('array');
         mockFS();
@@ -19,9 +23,6 @@ describe('winkit plugin managment', function() {
 
     describe('add \<name\>', function() {
         // const mockCommand = sinon.mock(createPlugin);
-        const INVALID_NAME = 'invalidPlugin';
-        const VALID_NAME = 'angular';
-        const PLUGIN_FOLDER_PATH = `${__dirname}/plugins/${VALID_NAME}/`;
 
         after(function() {
             // mockFS.restore();
@@ -83,6 +84,16 @@ describe('winkit plugin managment', function() {
             // mockCommand.restore();
         });
 
+        it('should reject with an invalid plugin name', async function() {
+            let errorMessage;
+            try {
+                await updatePlugin(INVALID_NAME)
+            } catch (e) {
+                errorMessage = e.message;
+            }
+            expect(errorMessage.trim().toLowerCase()).to.equal(`Plugin "${INVALID_NAME}" does not exists.`.toLowerCase())
+        });
+
         it('should resolve if plugin is updated, else reject', async function() {
             expect(true).to.equal(false);
         });
@@ -93,6 +104,16 @@ describe('winkit plugin managment', function() {
 
         after(function() {
             // mockCommand.restore();
+        });
+
+        it('should reject with an invalid plugin name', async function() {
+            let errorMessage;
+            try {
+                await deletePlugin(INVALID_NAME)
+            } catch (e) {
+                errorMessage = e.message;
+            }
+            expect(errorMessage.trim().toLowerCase()).to.equal(`Plugin "${INVALID_NAME}" does not exists.`.toLowerCase())
         });
 
         it('should resolve if plugin files are deleted, else reject', async function() {
