@@ -7,23 +7,28 @@
   "preferGlobal": true,
   "bin": "index.js",
   "scripts": {
-    "postinstall": "yarn link && yarn link \"winkit\""
+    "postinstall": "yarn link && yarn link \"winkit\"",
+    "test": "mocha **/**.spec.js",
+    "watchTest": "mocha **/**.spec.js --watch"
   },
   "dependencies": {
+    "chai": "^4.2.0",
+    "chai-fs": "^2.0.0",
     "commander": "2.19.0",
     "del": "3.0.0",
     "fs-extra": "7.0.1",
     "gulp": "4.0.0",
     "gulp-color": "0.0.2",
-    "gulp-concat": "2.6.1",
-    "gulp-delete-lines": "0.0.7",
     "gulp-fs": "0.0.2",
     "gulp-git": "2.8.0",
-    "gulp-install": "1.1.0",
     "gulp-shell": "0.6.5",
-    "gulp-util": "3.0.8",
     "inquirer": "6.2.1",
     "mkdirp": "0.5.1",
-    "readline": "1.3.0"
+    "mocha": "^5.2.0",
+    "mock-fs": "^4.7.0",
+    "readline": "1.3.0",
+    "sinon": "^7.2.2"
+  },
+  "devDependencies": {
   }
 }
