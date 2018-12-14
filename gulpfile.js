@@ -41,7 +41,7 @@ function createPlugin(name) {
     return new Promise((resolve, reject) => {
         name = name.toLowerCase();
         if (supportedPlugins.indexOf(name) === -1) {
-            reject(new Error(` Plugin "${name}" does not exists.`));
+            reject(new Error(` Plugin "${name}" does not exist.`));
         } else {
             mkdirp(`${__dirname}/plugins/${name}`, async (err) => {
                 if (err) {
@@ -63,7 +63,7 @@ function updatePlugin(name) {
     return new Promise((resolve, reject) => {
         name = name.toLowerCase();
         if (supportedPlugins.indexOf(name) === -1 || !fs.existsSync(`${__dirname}/plugins/${name}/index.js`)) {
-            reject(new Error(` Plugin "${name}" does not exists.`))
+            reject(new Error(` Plugin "${name}" does not exist.`))
         } else {
             process.chdir(`${__dirname}/plugins/${name}/`);
             console.log(color(`Updating ${name}...`, 'BLUE'));
@@ -83,7 +83,7 @@ function deletePlugin(name) {
     return new Promise((resolve, reject) => {
         name = name.toLowerCase();
         if (supportedPlugins.indexOf(name) === -1 || !fs.existsSync(`${__dirname}/plugins/${name}/index.js`)) {
-            reject(new Error(` Plugin "${name}" does not exists.`))
+            reject(new Error(` Plugin "${name}" does not exist.`))
         } else {
             fsExtra.removeSync(`${__dirname}/plugins/${name}`);
             console.log(color(`${name} plugin deleted successfully`, 'GREEN'));
