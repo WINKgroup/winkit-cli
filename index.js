@@ -3,7 +3,7 @@ const {createPlugin, updatePlugin, deletePlugin, supportedPlugins} = require('./
 const program = require('commander');
 const fs = require('fs');
 
-const version = '1.0.5';
+const version = '1.0.6';
 
 function addPlugin(plugin, p) {
     if (fs.existsSync(`${__dirname}/plugins/${plugin}/index.js`)) {
