@@ -41,7 +41,7 @@ program
     });
 
 program
-    .command('use:plugin <name> <version>')
+    .command('use:plugin <name> <v>')
     .description('Use a specific version of a plugin of your Winkit CLI.')
     .action(async (name, v) => {
         try {
