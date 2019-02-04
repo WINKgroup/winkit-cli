@@ -105,14 +105,21 @@ function usePlugin(name, version) {
         } else {
             branch = `tags/${version}`;
         }
-        git.checkout(branch, null, (err) => {
-            if (err) {
-                reject(err);
+        git.fetch(null, null, (e) => {
+            if (e) {
+                reject(e);
             } else {
-                console.log(color(`Swithced to ${version} successfully`, 'GREEN'));
-                resolve(true);
+                git.checkout(branch, null, (err) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        console.log(color(`Swithced to ${version} successfully`, 'GREEN'));
+                        resolve(true);
+                    }
+                });
             }
         });
+
     });
 }
 
