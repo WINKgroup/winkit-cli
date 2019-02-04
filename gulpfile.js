@@ -97,18 +97,19 @@ function deletePlugin(name) {
 function usePlugin(name, version) {
     return new Promise((resolve, reject) => {
         process.chdir(`${__dirname}/plugins/${name}/`);
-        let branch;
-        if (version === 'latest') {
-            branch = 'master';
-        } else if (version.indexOf('v') === -1) {
-            branch = `tags/v${version}`;
-        } else {
-            branch = `tags/${version}`;
-        }
-        git.fetch(null, null, (e) => {
-            if (e) {
-                reject(e);
+        git.fetch(null, null, (err) => {
+            if (err) {
+                reject(err);
             } else {
+                process.chdir(`${__dirname}/plugins/${name}/`);
+                let branch;
+                if (version === 'latest') {
+                    branch = 'master';
+                } else if (version.indexOf('v') === -1) {
+                    branch = `tags/v${version}`;
+                } else {
+                    branch = `tags/${version}`;
+                }
                 git.checkout(branch, null, (err) => {
                     if (err) {
                         reject(err);
@@ -119,7 +120,6 @@ function usePlugin(name, version) {
                 });
             }
         });
-
     });
 }
 
