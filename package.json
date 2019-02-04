@@ -7,6 +7,7 @@
   "preferGlobal": true,
   "bin": "index.js",
   "scripts": {
+    "release": "npm version patch && git push && npm publish",
     "postinstall": "yarn link && yarn link \"winkit\""
   },
   "dependencies": {

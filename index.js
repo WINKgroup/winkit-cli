@@ -1,9 +1,8 @@
 #!/usr/bin/env node
-const {createPlugin, updatePlugin, deletePlugin, supportedPlugins} = require('./gulpfile');
+const {createPlugin, updatePlugin, deletePlugin, usePlugin, supportedPlugins} = require('./gulpfile');
 const program = require('commander');
 const fs = require('fs');
-
-const version = '1.0.6';
+const {version} = require('./package.json');
 
 function addPlugin(plugin, p) {
     if (fs.existsSync(`${__dirname}/plugins/${plugin}/index.js`)) {
@@ -38,6 +37,18 @@ program
             await updatePlugin(name);
         } catch (e) {
             console.log('Error updating plugin!' + e.message);
+        }
+    });
+
+program
+    .command('use:plugin <name> <version>')
+    .description('Use a specific version of an existing plugin of your Winkit CLI.')
+    .action(async (name) => {
+        try {
+            await updatePlugin(name);
+            await usePlugin(version);
+        } catch (e) {
+            console.log('Error using specific plugin version!' + e.message);
         }
     });
 

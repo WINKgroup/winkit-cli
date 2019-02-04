@@ -67,11 +67,12 @@ function updatePlugin(name) {
         } else {
             process.chdir(`${__dirname}/plugins/${name}/`);
             console.log(color(`Updating ${name}...`, 'BLUE'));
-            git.pull('origin', 'master', (err) => {
+            git.pull('origin', 'master', async (err) => {
                 if (err) {
                     reject(err);
                 } else {
                     console.log(color(`${name} plugin updated successfully`, 'GREEN'));
+                    await usePlugin('latest');
                     resolve(true);
                 }
             });
@@ -92,9 +93,33 @@ function deletePlugin(name) {
     });
 }
 
+
+function usePlugin(version) {
+    return new Promise((resolve, reject) => {
+        process.chdir(`${__dirname}/plugins/${name}/`);
+        let branch;
+        if (version === 'latest') {
+            branch = 'master';
+        } else if (version.indexOf('v') === -1) {
+            branch = `tags/v${version}`;
+        } else {
+            branch = `tags/${version}`;
+        }
+        git.checkout(branch, null, (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                console.log(color(`Swithced to ${version} successfully`, 'GREEN'));
+                resolve(true);
+            }
+        });
+    });
+}
+
 module.exports = {
     createPlugin,
     updatePlugin,
     deletePlugin,
+    usePlugin,
     supportedPlugins
 };
