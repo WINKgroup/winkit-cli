@@ -41,3 +41,9 @@ Update an existing plugin of your Winkit CLI.
 $ delete:plugin <name>
 ```
 Delete an existing plugin of your Winkit CLI.
+
+#####
+```
+$ use:plugin <name> <version>
+```
+Use a specific version of a plugin of your Winkit CLI.

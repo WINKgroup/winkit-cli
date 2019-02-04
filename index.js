@@ -42,11 +42,11 @@ program
 
 program
     .command('use:plugin <name> <version>')
-    .description('Use a specific version of an existing plugin of your Winkit CLI.')
-    .action(async (name) => {
+    .description('Use a specific version of a plugin of your Winkit CLI.')
+    .action(async (name, v) => {
         try {
             await updatePlugin(name);
-            await usePlugin(version);
+            await usePlugin(v);
         } catch (e) {
             console.log('Error using specific plugin version!' + e.message);
         }
