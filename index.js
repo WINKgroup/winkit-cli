@@ -46,7 +46,7 @@ program
     .action(async (name, v) => {
         try {
             await updatePlugin(name);
-            await usePlugin(v);
+            await usePlugin(name, v);
         } catch (e) {
             console.log('Error using specific plugin version!' + e.message);
         }

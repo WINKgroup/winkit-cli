@@ -72,7 +72,7 @@ function updatePlugin(name) {
                     reject(err);
                 } else {
                     console.log(color(`${name} plugin updated successfully`, 'GREEN'));
-                    await usePlugin('latest');
+                    await usePlugin(name, 'latest');
                     resolve(true);
                 }
             });
@@ -94,7 +94,7 @@ function deletePlugin(name) {
 }
 
 
-function usePlugin(version) {
+function usePlugin(name, version) {
     return new Promise((resolve, reject) => {
         process.chdir(`${__dirname}/plugins/${name}/`);
         let branch;
