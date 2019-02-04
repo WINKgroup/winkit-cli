@@ -97,26 +97,20 @@ function deletePlugin(name) {
 function usePlugin(name, version) {
     return new Promise((resolve, reject) => {
         process.chdir(`${__dirname}/plugins/${name}/`);
-        git.fetch(null, null, null , (e) => {
-            if (e) {
-                reject(e);
+        let branch;
+        if (version === 'latest') {
+            branch = 'master';
+        } else if (version.indexOf('v') === -1) {
+            branch = `tags/v${version}`;
+        } else {
+            branch = `tags/${version}`;
+        }
+        git.checkout(branch, null, (err) => {
+            if (err) {
+                reject(err);
             } else {
-                let branch;
-                if (version === 'latest') {
-                    branch = 'master';
-                } else if (version.indexOf('v') === -1) {
-                    branch = `tags/v${version}`;
-                } else {
-                    branch = `tags/${version}`;
-                }
-                git.checkout(branch, null, (err) => {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        console.log(color(`Swithced to ${version} successfully`, 'GREEN'));
-                        resolve(true);
-                    }
-                });
+                console.log(color(`Swithced to ${version} successfully`, 'GREEN'));
+                resolve(true);
             }
         });
     });
