@@ -20,30 +20,38 @@ Winkit CLI is a command line that allows you to manage and use all the related p
 - [Git](https://git-scm.com/)
 
 ## Get started
-- Go in winkit-cli folder and run `yarn install` (NOTE: in case of problems in Unix filesystems run `cd /usr/local/bin && chmod +x winkit`)
-- Run `yarn link && yarn link "winkit"` in the folder where you will generate the project
-- Open the terminal and type `winkit --help`
+```
+$ npm install winkit -g
+$ winkit --help
+```
 
 ## Commands
+##### Add new plugin to your Winkit CLI.
 ```
-$ add:plugin <name>
+$ winkit add:plugin <name>
 ```
-Add new plugin to your Winkit CLI.
 
-#####
+##### Update an existing plugin of your Winkit CLI.
 ```
-$ update:plugins <name>
+$ winkit update:plugins <name>
 ```
-Update an existing plugin of your Winkit CLI.
 
-#####
+###### Delete an existing plugin of your Winkit CLI.
 ```
-$ delete:plugin <name>
+$ winkit delete:plugin <name>
 ```
-Delete an existing plugin of your Winkit CLI.
 
-#####
+###### Use a specific version of a plugin of your Winkit CLI.
 ```
-$ use:plugin <name> <version>
+$ winkit use:plugin <name> <version>
 ```
-Use a specific version of a plugin of your Winkit CLI.
+
+## NOTE
+in case of problems in Unix filesystems run:
+```
+$ cd /usr/local/bin && chmod +x winkit
+```
+Then go in the folder where npm installed winkit ad run:
+```
+$ yarn link && yarn link "winkit"
+```
